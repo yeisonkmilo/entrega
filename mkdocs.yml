@@ -13,10 +13,10 @@ repo_url: https://github.com/yeisonkmilo/Proyecto
 copyright: Copyright &copy; 2024 - 2030 Yusef Gonzalez | Aquicreamos
 
 extra_css:
-  - css/style.css
+  - assets/css/style.css
 
 extra_javascript:
-  - js/script.js
+  - assets/js/script.js
 
 theme:
   name: material
