@@ -1,13 +1,13 @@
-site_name: Mi documentación Online
-site_url: https://darwinyusef.github.io/materialmkdocs/
-site_author: Yusef Gonzalez | Aquicreamos
+site_name: SynCroPro
+site_url: https://github.com/yeisonkmilo/Proyecto.git
+site_author: Yeison Camilo | Wilfer Espinoza
 site_description: >-
   Este es un proyecto que gestiona la documentación de mi proyecto – 
   contiene los datos de usuario y contenidos
 
 # Repository
 repo_name: darwinyusef/materialmkdocs
-repo_url: https://github.com/darwinyusef/materialmkdocs
+repo_url: https://github.com/yeisonkmilo/Proyecto.git
 
 # Copyright
 copyright: Copyright &copy; 2024 - 2030 Yusef Gonzalez | Aquicreamos
