@@ -1,22 +1,22 @@
 site_name: SynCroPro
-site_url: https://github.com/yeisonkmilo/Proyecto.git
+site_url: https://yeisonkmilo.github.io/Proyecto/
 site_author: Yeison Camilo | Wilfer Espinoza
 site_description: >-
   Este es un proyecto que gestiona la documentación de mi proyecto – 
   contiene los datos de usuario y contenidos
 
 # Repository
-repo_name: darwinyusef/materialmkdocs
-repo_url: https://github.com/yeisonkmilo/Proyecto.git
+repo_name: yeisonkmilo/Proyecto
+repo_url: https://github.com/yeisonkmilo/Proyecto
 
 # Copyright
 copyright: Copyright &copy; 2024 - 2030 Yusef Gonzalez | Aquicreamos
 
 extra_css:
-  - assets/css/style.css
+  - css/style.css
 
 extra_javascript:
-  - assets/js/script.js
+  - js/script.js
 
 theme:
   name: material
