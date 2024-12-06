@@ -1,0 +1,36 @@
+@startuml
+
+class EncargadoProduccion {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + modificarOrdenProduccion(orden: OrdenProduccion, nuevosDetalles: Map<String, Object>): void
+}
+
+class OrdenProduccion {
+    + idOrden: int
+    + fechaCreacion: Date
+    + fechaEstimadaInicio: Date
+    + estado: String
+    + detalles: Map<String, Object>
+    + actualizarDetalles(nuevosDetalles: Map<String, Object>): void
+    + esModificable(): boolean
+}
+
+class DetalleProduccion {
+    + idDetalle: int
+    + recurso: String
+    + cantidad: int
+    + descripcion: String
+}
+
+class SistemaProduccion {
+    + validarCambioOrden(orden: OrdenProduccion): boolean
+}
+
+EncargadoProduccion --> OrdenProduccion : "Modifica"
+OrdenProduccion --> DetalleProduccion : "Contiene"
+EncargadoProduccion --> SistemaProduccion : "Solicita validación"
+SistemaProduccion --> OrdenProduccion : "Valida modificación"
+
+@enduml

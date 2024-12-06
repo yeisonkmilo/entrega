@@ -1,0 +1,36 @@
+@startuml
+
+class SupervisorDiseno {
+    + idSupervisor: int
+    + nombre: String
+    + generarReporteDisenosPendientes(): List<VersionDiseno>
+}
+
+class VersionDiseno {
+    + idVersion: int
+    + numeroVersion: String
+    + descripcion: String
+    + archivo: String
+    + estado: String
+    + fechaCarga: Date
+    + obtenerDetalles(): String
+}
+
+class Proyecto {
+    + idProyecto: int
+    + nombre: String
+    + descripcion: String
+    + obtenerVersionesPendientes(): List<VersionDiseno>
+}
+
+class SistemaDiseno {
+    + obtenerVersionesPendientes(supervisor: SupervisorDiseno): List<VersionDiseno>
+    + generarReportePendientes(supervisor: SupervisorDiseno): String
+}
+
+SupervisorDiseno --> SistemaDiseno : "Solicita reporte de"
+SistemaDiseno --> VersionDiseno : "Filtra por estado"
+VersionDiseno --> Proyecto : "Pertenece a"
+Proyecto --> VersionDiseno : "Contiene"
+
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+
+class Operario {
+    + idOperario: int
+    + nombre: String
+    + rol: String
+    + registrarIncidencia(etapa: Etapa, incidencia: Incidencia): void
+}
+
+class Supervisor {
+    + idSupervisor: int
+    + nombre: String
+    + rol: String
+    + registrarIncidencia(etapa: Etapa, incidencia: Incidencia): void
+    + consultarIncidenciasPorEtapa(etapa: Etapa): List<Incidencia>
+}
+
+class Etapa {
+    + idEtapa: int
+    + nombre: String
+    + estado: String
+    + incidencias: List<Incidencia>
+    + agregarIncidencia(incidencia: Incidencia): void
+}
+
+class Incidencia {
+    + idIncidencia: int
+    + descripcion: String
+    + fechaRegistro: Date
+    + tipo: String
+    + impacto: String
+    + estado: String
+}
+
+class SistemaProduccion {
+    + almacenarIncidencia(incidencia: Incidencia): void
+    + generarReporteIncidencias(filtro: Map<String, Object>): List<Incidencia>
+}
+
+Operario --> Etapa : "Registra incidencia en"
+Supervisor --> Etapa : "Consulta incidencias de"
+Etapa --> Incidencia : "Contiene"
+Operario --> SistemaProduccion : "Envía registro"
+Supervisor --> SistemaProduccion : "Solicita reportes"
+SistemaProduccion --> Incidencia : "Almacena y gestiona"
+
+@enduml

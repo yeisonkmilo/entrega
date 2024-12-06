@@ -1,0 +1,39 @@
+@startuml
+
+class AsistenteAdministrativo {
+    + idAsistente: int
+    + nombre: String
+    + notificarAnalista(cotizacion: Cotizacion, analista: AnalistaComercial): void
+}
+
+class AnalistaComercial {
+    + idAnalista: int
+    + nombre: String
+    + revisarCotizacion(cotizacion: Cotizacion): void
+    + aprobarCotizacion(cotizacion: Cotizacion): void
+    + modificarCotizacion(cotizacion: Cotizacion, detalles: List<DetalleCotizacion>): void
+}
+
+class Cotizacion {
+    + idCotizacion: int
+    + fecha: Date
+    + estado: String
+    + total: double
+    + detalles: List<DetalleCotizacion>
+    + marcarParaRevision(): void
+}
+
+class DetalleCotizacion {
+    + idDetalle: int
+    + nombreProducto: String
+    + cantidad: int
+    + precioUnitario: double
+    + subtotal(): double
+}
+
+AsistenteAdministrativo --> AnalistaComercial : "Notifica"
+AsistenteAdministrativo --> Cotizacion : "Gestiona"
+AnalistaComercial --> Cotizacion : "Revisa y aprueba"
+Cotizacion --> DetalleCotizacion : "Contiene 1..*"
+
+@enduml

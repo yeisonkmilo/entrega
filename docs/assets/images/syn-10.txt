@@ -1,0 +1,34 @@
+@startuml
+
+class AnalistaFinanciero {
+    + idAnalista: int
+    + nombre: String
+    + generarAlertaLimiteCredito(cliente: Cliente): void
+}
+
+class Cliente {
+    + idCliente: int
+    + nombre: String
+    + direccion: String
+    + telefono: String
+    + correo: String
+    + limiteCredito: double
+    + saldoActual: double
+    + estadoCredito: String
+    + realizarCompra(monto: double): void
+}
+
+class AlertaCredito {
+    + idAlerta: int
+    + fecha: Date
+    + mensaje: String
+    + tipo: String
+    + cliente: Cliente
+    + enviarAlerta(): void
+}
+
+AnalistaFinanciero --> AlertaCredito : "Genera alerta"
+Cliente --> AlertaCredito : "Genera alerta cuando supera límite"
+AlertaCredito --> Cliente : "Está asociada con"
+
+@enduml

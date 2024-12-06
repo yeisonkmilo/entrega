@@ -1,0 +1,40 @@
+@startuml
+
+class Empleado {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + convertirCotizacionEnPedido(cotizacion: Cotizacion): Pedido
+}
+
+class Cotizacion {
+    + idCotizacion: int
+    + fecha: Date
+    + estado: String
+    + total: double
+    + detalles: List<DetalleCotizacion>
+    + aprobar(): void
+}
+
+class Pedido {
+    + idPedido: int
+    + fecha: Date
+    + total: double
+    + estado: String
+    + detalles: List<DetalleCotizacion>
+}
+
+class DetalleCotizacion {
+    + idDetalle: int
+    + nombreProducto: String
+    + cantidad: int
+    + precioUnitario: double
+    + subtotal(): double
+}
+
+Empleado --> Cotizacion : "Gestiona"
+Cotizacion --> DetalleCotizacion : "Contiene 1..*"
+Empleado --> Pedido : "Convierte cotización aprobada"
+Pedido --> DetalleCotizacion : "Refleja detalles"
+
+@enduml

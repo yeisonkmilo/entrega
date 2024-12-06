@@ -1,0 +1,51 @@
+@startuml
+
+class EncargadoInventarios {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + registrarMovimiento(movimiento: Movimiento): void
+}
+
+class Producto {
+    + idProducto: int
+    + nombre: String
+    + descripcion: String
+    + cantidadDisponible: int
+    + precioUnitario: double
+    + categoria: String
+    + fechaIngreso: Date
+    + proveedor: String
+    + actualizarCantidad(cantidad: int): void
+}
+
+class Movimiento {
+    + idMovimiento: int
+    + fechaMovimiento: Date
+    + tipoMovimiento: String
+    + cantidad: int
+    + producto: Producto
+    + registrarMovimiento(): void
+}
+
+class Categoria {
+    + idCategoria: int
+    + nombre: String
+    + descripcion: String
+}
+
+class Proveedor {
+    + idProveedor: int
+    + nombre: String
+    + direccion: String
+    + telefono: String
+    + correo: String
+}
+
+EncargadoInventarios --> Movimiento : "Registra"
+Movimiento --> Producto : "Afecta cantidad"
+Producto --> Categoria : "Pertenece a"
+Producto --> Proveedor : "Suministrado por"
+Movimiento --> EncargadoInventarios : "Gestionado por"
+
+@enduml

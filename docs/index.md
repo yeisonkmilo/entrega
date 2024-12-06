@@ -1,5 +1,5 @@
-# Gestión Documental con python Online a través de GITHUB PAGES
+# Gestión Documental Pyotecto SynCroPro
 
 ![Book Documental](./assets/images/book.jpeg)
 ## Entra y descarga el link 
-[https://darwinyusef.github.io/mkdocsthemplate/site](https://darwinyusef.github.io/mkdocsthemplate/site/tal-4/)
+[https://github.com/yeisonkmilo/mkdocs.git](https://github.com/yeisonkmilo/mkdocs.git)

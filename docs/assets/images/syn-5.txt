@@ -1,0 +1,39 @@
+@startuml
+
+class Empleado {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + consultarHistorialPedidos(cliente: Cliente): List<Pedido>
+}
+
+class Cliente {
+    + idCliente: int
+    + nombre: String
+    + direccion: String
+    + telefono: String
+    + correo: String
+    + pedidos: List<Pedido>
+}
+
+class Pedido {
+    + idPedido: int
+    + fecha: Date
+    + total: double
+    + estado: String
+    + detalles: List<DetallePedido>
+}
+
+class DetallePedido {
+    + idDetalle: int
+    + nombreProducto: String
+    + cantidad: int
+    + precioUnitario: double
+    + subtotal(): double
+}
+
+Empleado --> Cliente : "Consulta pedidos"
+Cliente --> Pedido : "Tiene historial"
+Pedido --> DetallePedido : "Contiene 1..*"
+
+@enduml

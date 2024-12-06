@@ -1,0 +1,52 @@
+@startuml
+
+class EncargadoProduccion {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + generarReporteProduccion(fechaInicio: Date, fechaFin: Date): ReporteProduccion
+}
+
+class ReporteProduccion {
+    + idReporte: int
+    + fechaGeneracion: Date
+    + periodo: String
+    + ordenesProducidas: List<OrdenProduccion>
+    + etapasCriticas: List<Etapa>
+    + generarDetalles(): void
+}
+
+class OrdenProduccion {
+    + idOrden: int
+    + fechaCreacion: Date
+    + fechaEstimadaEntrega: Date
+    + estado: String
+    + etapas: List<Etapa>
+    + productos: List<Producto>
+    + calcularProgreso(): float
+}
+
+class Etapa {
+    + idEtapa: int
+    + nombre: String
+    + descripcion: String
+    + estado: String
+    + duracionReal: int
+    + duracionEstimada: int
+    + calcularEficiencia(): float
+}
+
+class Producto {
+    + idProducto: int
+    + nombre: String
+    + descripcion: String
+    + cantidad: int
+}
+
+EncargadoProduccion --> ReporteProduccion : "Genera"
+ReporteProduccion --> OrdenProduccion : "Incluye"
+ReporteProduccion --> Etapa : "Identifica cuellos de botella"
+OrdenProduccion --> Producto : "Producido"
+OrdenProduccion --> Etapa : "Compuesta por"
+
+@enduml

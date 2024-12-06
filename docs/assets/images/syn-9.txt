@@ -1,0 +1,41 @@
+@startuml
+
+class EmpleadoVentasFinanzas {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + registrarPago(pedido: Pedido, pago: Pago): void
+}
+
+class Pedido {
+    + idPedido: int
+    + fecha: Date
+    + total: double
+    + estado: String
+    + detalles: List<DetallePedido>
+    + pago: Pago
+}
+
+class Pago {
+    + idPago: int
+    + fechaPago: Date
+    + monto: double
+    + metodoPago: String
+    + estadoPago: String
+    + asociarPedido(pedido: Pedido): void
+}
+
+class DetallePedido {
+    + idDetalle: int
+    + nombreProducto: String
+    + cantidad: int
+    + precioUnitario: double
+    + subtotal(): double
+}
+
+EmpleadoVentasFinanzas --> Pedido : "Registra pago"
+Pedido --> Pago : "Asocia pago"
+Pedido --> DetallePedido : "Contiene 1..*"
+Pago --> Pedido : "Asocia con"
+
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+
+class SupervisorProduccion {
+    + idSupervisor: int
+    + nombre: String
+    + cerrarOrdenProduccion(orden: OrdenProduccion): void
+}
+
+class OrdenProduccion {
+    + idOrden: int
+    + fechaInicio: Date
+    + fechaFin: Date
+    + estado: String
+    + productos: List<Producto>
+    + verificarEstadoCompleto(): boolean
+    + actualizarEstado(estado: String): void
+}
+
+class Producto {
+    + idProducto: int
+    + nombre: String
+    + cantidad: int
+    + especificaciones: String
+}
+
+class SistemaProduccion {
+    + registrarCierreOrden(orden: OrdenProduccion): void
+    + liberarRecursos(orden: OrdenProduccion): void
+}
+
+SupervisorProduccion --> OrdenProduccion : "Gestiona"
+OrdenProduccion --> Producto : "Contiene"
+SupervisorProduccion --> SistemaProduccion : "Notifica cierre de"
+SistemaProduccion --> OrdenProduccion : "Registra cierre de"
+SistemaProduccion --> Producto : "Actualiza estado de"
+
+@enduml

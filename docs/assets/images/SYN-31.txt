@@ -1,0 +1,37 @@
+@startuml
+
+class Diseñador {
+    + idDiseñador: int
+    + nombre: String
+    + crearProyecto(nombre: String, descripcion: String): Proyecto
+    + listarProyectos(): List<Proyecto>
+}
+
+class Proyecto {
+    + idProyecto: int
+    + nombre: String
+    + descripcion: String
+    + fechaCreacion: Date
+    + agregarDetalle(detalle: DetalleProyecto): void
+    + obtenerDetalles(): List<DetalleProyecto>
+}
+
+class DetalleProyecto {
+    + idDetalle: int
+    + titulo: String
+    + descripcion: String
+    + archivoAdjunto: String
+    + fechaRegistro: Date
+}
+
+class SistemaDiseno {
+    + registrarProyecto(proyecto: Proyecto): void
+    + obtenerProyectos(diseñador: Diseñador): List<Proyecto>
+}
+
+Diseñador --> Proyecto : "Crea"
+Proyecto --> DetalleProyecto : "Contiene"
+Diseñador --> SistemaDiseno : "Interactúa con"
+SistemaDiseno --> Proyecto : "Gestiona"
+
+@enduml

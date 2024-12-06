@@ -1,0 +1,51 @@
+@startuml
+
+class Administrador {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + restringirAccesoEdicionInventarios(asistenteLogistico: AsistenteLogistico): void
+}
+
+class AsistenteLogistico {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + editarInventario(): void
+}
+
+class Producto {
+    + idProducto: int
+    + nombre: String
+    + descripcion: String
+    + cantidadDisponible: int
+    + cantidadMinima: int
+    + cantidadMaxima: int
+    + precioUnitario: double
+    + categoria: String
+    + proveedor: String
+    + fechaIngreso: Date
+    + actualizarCantidad(cantidad: int): void
+}
+
+class Categoria {
+    + idCategoria: int
+    + nombre: String
+    + descripcion: String
+}
+
+class Proveedor {
+    + idProveedor: int
+    + nombre: String
+    + direccion: String
+    + telefono: String
+    + correo: String
+}
+
+Administrador --> AsistenteLogistico : "Restringe acceso"
+AsistenteLogistico --> Producto : "No puede editar"
+Producto --> Categoria : "Pertenece a"
+Producto --> Proveedor : "Suministrado por"
+Producto --> Administrador : "Gestionado por"
+
+@enduml

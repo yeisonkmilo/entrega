@@ -1,0 +1,42 @@
+@startuml
+
+class EncargadoProduccion {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + consultarAvanceOrden(orden: OrdenProduccion): String
+}
+
+class OrdenProduccion {
+    + idOrden: int
+    + fechaCreacion: Date
+    + fechaEstimadaEntrega: Date
+    + estado: String
+    + etapas: List<Etapa>
+    + calcularPorcentajeAvance(): double
+    + identificarRetrasos(): List<Etapa>
+}
+
+class Etapa {
+    + idEtapa: int
+    + nombre: String
+    + descripcion: String
+    + duracionEstimada: int
+    + duracionReal: int
+    + estado: String
+    + porcentajeCompletado: double
+    + esRetrasada(): boolean
+}
+
+class SistemaProduccion {
+    + generarReporteAvance(orden: OrdenProduccion): String
+    + notificarRetrasos(encargado: EncargadoProduccion, etapasRetrasadas: List<Etapa>): void
+}
+
+EncargadoProduccion --> OrdenProduccion : "Consulta avance"
+OrdenProduccion --> Etapa : "Incluye"
+EncargadoProduccion --> SistemaProduccion : "Solicita reporte"
+SistemaProduccion --> OrdenProduccion : "Genera reporte"
+SistemaProduccion --> EncargadoProduccion : "Notifica retrasos"
+
+@enduml

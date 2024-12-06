@@ -1,0 +1,39 @@
+@startuml
+
+class SupervisorDiseno {
+    + idSupervisor: int
+    + nombre: String
+    + aprobarVersion(version: VersionDiseno): void
+    + rechazarVersion(version: VersionDiseno, motivo: String): void
+}
+
+class VersionDiseno {
+    + idVersion: int
+    + numeroVersion: String
+    + descripcion: String
+    + archivo: String
+    + estado: String
+    + motivoRechazo: String
+    + fechaRevision: Date
+    + actualizarEstado(estado: String, motivo: String = ""): void
+}
+
+class Proyecto {
+    + idProyecto: int
+    + nombre: String
+    + descripcion: String
+    + obtenerVersionesPendientes(): List<VersionDiseno>
+}
+
+class SistemaDiseno {
+    + registrarRevision(version: VersionDiseno, estado: String, motivo: String = ""): void
+    + obtenerVersionesPendientes(proyecto: Proyecto): List<VersionDiseno>
+}
+
+SupervisorDiseno --> VersionDiseno : "Revisa"
+VersionDiseno --> Proyecto : "Pertenece a"
+Proyecto --> VersionDiseno : "Contiene"
+SupervisorDiseno --> SistemaDiseno : "Registra revisión en"
+SistemaDiseno --> VersionDiseno : "Actualiza estado de"
+
+@enduml

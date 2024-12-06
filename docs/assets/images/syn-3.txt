@@ -1,0 +1,32 @@
+@startuml
+
+class Empleado {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + editarCotizacion(cotizacion: Cotizacion, detalles: List<DetalleCotizacion>): void
+    + cancelarCotizacion(cotizacion: Cotizacion): void
+}
+
+class Cotizacion {
+    + idCotizacion: int
+    + fecha: Date
+    + estado: String
+    + total: double
+    + agregarDetalle(detalle: DetalleCotizacion): void
+    + calcularTotal(): double
+    + aprobar(): void
+}
+
+class DetalleCotizacion {
+    + idDetalle: int
+    + nombreProducto: String
+    + cantidad: int
+    + precioUnitario: double
+    + subtotal(): double
+}
+
+Empleado --> Cotizacion : "Gestiona"
+Cotizacion --> DetalleCotizacion : "Contiene 1..*"
+
+@enduml

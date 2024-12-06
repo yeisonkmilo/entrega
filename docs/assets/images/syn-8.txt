@@ -1,0 +1,45 @@
+@startuml
+
+class GerenteVentas {
+    + idGerente: int
+    + nombre: String
+    + generarReporteVentas(cliente: Cliente, fechaInicio: Date, fechaFin: Date): ReporteVentas
+    + generarReporteVentasPorProducto(producto: Producto, fechaInicio: Date, fechaFin: Date): ReporteVentas
+}
+
+class ReporteVentas {
+    + idReporte: int
+    + fechaGeneracion: Date
+    + totalVentas: double
+    + detalles: List<DetalleReporte>
+    + generarResumen(): String
+}
+
+class Cliente {
+    + idCliente: int
+    + nombre: String
+    + direccion: String
+    + telefono: String
+    + correo: String
+}
+
+class Producto {
+    + idProducto: int
+    + nombre: String
+    + precioUnitario: double
+}
+
+class DetalleReporte {
+    + idDetalle: int
+    + producto: Producto
+    + cantidadVendida: int
+    + totalVenta: double
+}
+
+GerenteVentas --> ReporteVentas : "Genera"
+Cliente --> ReporteVentas : "Consulta en reportes"
+Producto --> ReporteVentas : "Consulta en reportes"
+ReporteVentas --> DetalleReporte : "Contiene 1..*"
+DetalleReporte --> Producto : "Asocia"
+
+@enduml

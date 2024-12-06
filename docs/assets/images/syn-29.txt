@@ -1,0 +1,42 @@
+@startuml
+
+class SistemaProduccion {
+    + registrarIncidencia(incidencia: Incidencia): void
+    + generarAlerta(jefe: JefeProduccion, incidencia: Incidencia): void
+    + enviarNotificacion(jefe: JefeProduccion, mensaje: String): void
+}
+
+class Incidencia {
+    + idIncidencia: int
+    + descripcion: String
+    + fechaRegistro: Date
+    + tipo: String
+    + impacto: String
+    + estado: String
+    + esCritica(): boolean
+}
+
+class JefeProduccion {
+    + idJefe: int
+    + nombre: String
+    + contacto: String
+    + recibirAlerta(mensaje: String): void
+}
+
+class Etapa {
+    + idEtapa: int
+    + nombre: String
+    + estado: String
+    + registrarIncidencia(incidencia: Incidencia): void
+    + incidencias: List<Incidencia>
+}
+
+JefeProduccion <.. SistemaProduccion : "Recibe alertas de"
+SistemaProduccion --> Incidencia : "Evalúa"
+SistemaProduccion --> JefeProduccion : "Envía notificaciones"
+Etapa --> Incidencia : "Contiene"
+SistemaProduccion --> Etapa : "Monitorea incidencias"
+
+@enduml
+
+

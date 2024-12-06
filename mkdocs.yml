@@ -119,5 +119,68 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
-  - Análisis de Software:
-      - TAL-4 Diagrama de canvas lean: tal-4.md
+  - DOCUMENTACIÓN:
+      - DOC-1 Documentación: doc-1.md
+      - BD Diagrama entidad Relación: bd.md
+  - GESTIÓN VENTAS:
+      - SYN-1 Registro Clientes: syn-1.md
+      - SYN-2 Generar Cotizaciones: syn-2.md
+      - SYN-3 Editar Cotizaciones: syn-3.md
+      - SYN-4 Cotizaciones Aprobadas: syn-4.md
+      - SYN-5 Consulta de Pedidos: syn-5.md
+      - SYN-6 Aprobación Cotizaciones: syn-6.md
+      - SYN-7 Generar Reportes: syn-7.md
+      - SYN-8 Registrar Pago: syn-8.md
+  - GESTIÓN INVENTARIOS:
+      - SYN-9 Registrar Productos: syn-9.md
+      - SYN-10 Registrar Movimientos: syn-10.md
+      - SYN-11 Realizar Ajustes: syn-11.md
+      - SYN-12 Generar Reportes: syn-12.md
+      - SYN-13 Niveles de Productos: syn-13.md
+      - SYN-14 Notificación de Productos: syn-14.md
+      - SYN-15 Disponibilidad Productos: syn-15.md
+      - SYN-16 Generar Reportes Inventario: syn-16.md
+      - SYN-17 Visualizar Rotación Productos: syn-17.md
+      - SYN-18 Restringir Inventario: syn-18.md
+  - GESTIÓN PRODUCCIÓN:
+      - SYN-19 Crear Ordenes: syn-19.md
+      - SYN-20 Asignar Operarios: syn-20.md
+      - SYN-21 Actualización de Estado: syn-21.md
+      - SYN-22 Generar Reportes: syn-22.md
+      - SYN-23 Notificación Retrasos: syn-23.md
+      - SYN-24 Modificar Ordenes: syn-24.md
+      - SYN-25 Visualizar Avance: syn-25.md
+      - SYN-26 Registrar Incidencias: syn-26.md
+      - SYN-27 Alertas Incidencias: syn-27.md
+      - SYN-28 Cerrar Ordenes : syn-28.md
+  - GESTIÓN DISEÑO:
+      - SYN-29 Generar Prototipos: syn-29.md
+      - SYN-30 Generar Diseño: syn-30.md
+      - SYN-31 Generar Reportes: syn-31.md
+      - SYN-32 Generar Certificados: syn-32.md
+      - SYN-33 Registrar Pedidos: syn-33.md
+      - SYN-34 Aprobar Pedidos: syn-34.md
+      - SYN-35 Generar Reportes: syn-35.md
+      - SYN-36 Notificación de Pedidos: syn-36.md
+      - SYN-37 Generar Procesos: syn-37.md
+  - GESTIÓN FINANZAS:
+      - SYN-38 Registrar Cambios: syn-38.md
+      - SYN-39 Aprobar Cambios: syn-39.md
+      - SYN-40 Generar Reportes: syn-40.md
+      - SYN-41 Notificación de Cambios: syn-41.md
+      - SYN-42 Generar Solicitudes: syn-42.md
+      - SYN-43 Aprobar Solicitudes: syn-43.md
+      - SYN-44 Generar Reportes: syn-44.md
+      - SYN-45 Notificación de Solicitudes: syn-45.md
+  - GESTIÓN LOGISTICA:
+      - SYN-46 Generar Requisiciones: syn-46.md
+      - SYN-47 Aprobar Requisiciones: syn-47.md
+      - SYN-48 Generar Reportes: syn-48.md
+  - GESTIÓN ANALISIS Y REPORTES:
+      - SYN-49 Notificación de Requisiciones: syn-49.md
+      - SYN-50 Generar Compras: syn-50.md
+      - SYN-51 Aprobar Compras: syn-51.md
+      - SYN-52 Generar Reportes: syn-52.md
+  - GESTIÓN SOPORTE Y COMUNICACIÓN:
+      - SYN-53 Notificación de Compras: syn-53.md 
+      - SYN-54 Generar Reportes: syn-54.md

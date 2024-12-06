@@ -1,0 +1,45 @@
+@startuml
+
+class Usuario {
+    + idUsuario: int
+    + nombre: String
+    + rol: String
+    + consultarHistorial(estado: String): List<VersionDiseno>
+}
+
+class Disenador {
+    + idDisenador: int
+    + proyectos: List<Proyecto>
+    + consultarHistorial(estado: String): List<VersionDiseno>
+}
+
+class SupervisorDiseno {
+    + idSupervisor: int
+    + proyectosSupervisados: List<Proyecto>
+    + consultarHistorial(estado: String): List<VersionDiseno>
+}
+
+class VersionDiseno {
+    + idVersion: int
+    + numeroVersion: String
+    + descripcion: String
+    + estado: String
+    + fechaEstado: Date
+    + obtenerDetalles(): String
+}
+
+class Proyecto {
+    + idProyecto: int
+    + nombre: String
+    + descripcion: String
+    + versiones: List<VersionDiseno>
+    + obtenerHistorialPorEstado(estado: String): List<VersionDiseno>
+}
+
+Usuario <|-- Disenador
+Usuario <|-- SupervisorDiseno
+Proyecto --> VersionDiseno : "Contiene"
+Disenador --> Proyecto : "Gestiona"
+SupervisorDiseno --> Proyecto : "Supervisa"
+
+@enduml

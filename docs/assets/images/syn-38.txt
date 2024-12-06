@@ -1,0 +1,50 @@
+@startuml
+
+class Usuario {
+    + idUsuario: int
+    + nombre: String
+    + rol: String
+    + actualizarEstado(version: VersionDiseno, nuevoEstado: String): void
+}
+
+class Disenador {
+    + idDisenador: int
+    + proyectos: List<Proyecto>
+    + actualizarEstado(version: VersionDiseno, nuevoEstado: String): void
+}
+
+class SupervisorDiseno {
+    + idSupervisor: int
+    + proyectosSupervisados: List<Proyecto>
+    + actualizarEstado(version: VersionDiseno, nuevoEstado: String): void
+}
+
+class VersionDiseno {
+    + idVersion: int
+    + numeroVersion: String
+    + descripcion: String
+    + estado: String
+    + fechaUltimaActualizacion: Date
+    + notificarCambioEstado(): void
+}
+
+class SistemaNotificaciones {
+    + enviarNotificacion(usuarios: List<Usuario>, mensaje: String): void
+}
+
+class Proyecto {
+    + idProyecto: int
+    + nombre: String
+    + descripcion: String
+    + versiones: List<VersionDiseno>
+    + obtenerVersion(idVersion: int): VersionDiseno
+}
+
+Usuario <|-- Disenador
+Usuario <|-- SupervisorDiseno
+Proyecto --> VersionDiseno : "Contiene"
+Disenador --> Proyecto : "Gestiona"
+SupervisorDiseno --> Proyecto : "Supervisa"
+VersionDiseno --> SistemaNotificaciones : "Solicita notificación"
+
+@enduml

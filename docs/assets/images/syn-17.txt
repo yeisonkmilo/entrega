@@ -1,0 +1,44 @@
+@startuml
+
+class EncargadoVentas {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + consultarDisponibilidadProducto(producto: Producto): String
+}
+
+class Producto {
+    + idProducto: int
+    + nombre: String
+    + descripcion: String
+    + cantidadDisponible: int
+    + cantidadMinima: int
+    + cantidadMaxima: int
+    + precioUnitario: double
+    + categoria: String
+    + proveedor: String
+    + fechaIngreso: Date
+    + actualizarCantidad(cantidad: int): void
+    + verificarDisponibilidad(): String
+}
+
+class Categoria {
+    + idCategoria: int
+    + nombre: String
+    + descripcion: String
+}
+
+class Proveedor {
+    + idProveedor: int
+    + nombre: String
+    + direccion: String
+    + telefono: String
+    + correo: String
+}
+
+EncargadoVentas --> Producto : "Consulta disponibilidad"
+Producto --> Categoria : "Pertenece a"
+Producto --> Proveedor : "Suministrado por"
+Producto --> EncargadoVentas : "Gestionado por"
+
+@enduml

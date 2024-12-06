@@ -1,0 +1,39 @@
+@startuml
+
+class EncargadoProduccion {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + actualizarEstadoEtapa(etapa: Etapa, nuevoEstado: String): void
+}
+
+class Etapa {
+    + idEtapa: int
+    + nombre: String
+    + descripcion: String
+    + duracionEstimada: int
+    + estado: String
+    + actualizarEstado(nuevoEstado: String): void
+}
+
+class OrdenProduccion {
+    + idOrden: int
+    + fechaCreacion: Date
+    + fechaEstimadaEntrega: Date
+    + estadoGeneral: String
+    + etapas: List<Etapa>
+    + actualizarEstadoGeneral(): void
+}
+
+class Producto {
+    + idProducto: int
+    + nombre: String
+    + descripcion: String
+    + cantidad: int
+}
+
+EncargadoProduccion --> Etapa : "Actualiza estado"
+Etapa --> OrdenProduccion : "Pertenece a"
+OrdenProduccion --> Producto : "Contiene"
+
+@enduml

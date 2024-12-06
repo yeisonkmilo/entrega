@@ -1,0 +1,55 @@
+@startuml
+
+class EncargadoProduccion {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + asignarOperarioAEtapa(operario: Operario, etapa: Etapa): void
+}
+
+class Operario {
+    + idOperario: int
+    + nombre: String
+    + cargo: String
+    + especialidad: String
+    + asignadoAEtapa(etapa: Etapa): void
+}
+
+class Etapa {
+    + idEtapa: int
+    + nombre: String
+    + descripcion: String
+    + duracionEstimada: int
+    + operariosAsignados: List<Operario>
+    + ejecutarTarea(): void
+}
+
+class OrdenProduccion {
+    + idOrden: int
+    + fechaCreacion: Date
+    + fechaEstimadaEntrega: Date
+    + estado: String
+    + etapas: List<Etapa>
+    + detallesEspecificaciones(): void
+}
+
+class Producto {
+    + idProducto: int
+    + nombre: String
+    + descripcion: String
+    + cantidadDisponible: int
+    + cantidadMinima: int
+    + cantidadMaxima: int
+    + precioUnitario: double
+    + categoria: String
+    + proveedor: String
+    + fechaIngreso: Date
+}
+
+EncargadoProduccion --> Operario : "Asigna"
+Operario --> Etapa : "Asignado a"
+Etapa --> OrdenProduccion : "Pertenece a"
+OrdenProduccion --> Producto : "Contiene"
+Etapa --> Operario : "Tiene asignado"
+
+@enduml

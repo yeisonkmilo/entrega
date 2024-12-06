@@ -1,0 +1,30 @@
+@startuml
+
+class SupervisorDiseno {
+    + idSupervisor: int
+    + nombre: String
+    + asignarProyecto(disenador: Disenador, proyecto: Proyecto): void
+}
+
+class Disenador {
+    + idDisenador: int
+    + nombre: String
+    + correoElectronico: String
+    + proyectos: List<Proyecto>
+    + agregarProyecto(proyecto: Proyecto): void
+}
+
+class Proyecto {
+    + idProyecto: int
+    + nombre: String
+    + descripcion: String
+    + estado: String
+    + disenadorResponsable: Disenador
+    + asignarResponsable(disenador: Disenador): void
+}
+
+SupervisorDiseno --> Proyecto : "Asigna"
+Proyecto --> Disenador : "Tiene responsable"
+Disenador --> Proyecto : "Gestiona"
+
+@enduml

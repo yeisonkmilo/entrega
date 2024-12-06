@@ -1,0 +1,44 @@
+@startuml
+
+class EncargadoInventarios {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + establecerNivelesMinimosMaximos(producto: Producto, minimo: int, maximo: int): void
+}
+
+class Producto {
+    + idProducto: int
+    + nombre: String
+    + descripcion: String
+    + cantidadDisponible: int
+    + cantidadMinima: int
+    + cantidadMaxima: int
+    + precioUnitario: double
+    + categoria: String
+    + proveedor: String
+    + fechaIngreso: Date
+    + actualizarCantidad(cantidad: int): void
+    + verificarNivelStock(): String
+}
+
+class Categoria {
+    + idCategoria: int
+    + nombre: String
+    + descripcion: String
+}
+
+class Proveedor {
+    + idProveedor: int
+    + nombre: String
+    + direccion: String
+    + telefono: String
+    + correo: String
+}
+
+EncargadoInventarios --> Producto : "Establece niveles"
+Producto --> Categoria : "Pertenece a"
+Producto --> Proveedor : "Suministrado por"
+Producto --> EncargadoInventarios : "Gestionado por"
+
+@enduml

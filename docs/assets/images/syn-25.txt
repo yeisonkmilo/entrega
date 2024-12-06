@@ -1,0 +1,49 @@
+@startuml
+
+class EncargadoProduccion {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + recibirNotificacion(notificacion: Notificacion): void
+    + tomarAccionCorrectiva(etapa: Etapa): void
+}
+
+class Etapa {
+    + idEtapa: int
+    + nombre: String
+    + descripcion: String
+    + duracionEstimada: int
+    + duracionReal: int
+    + estado: String
+    + verificarRetraso(): boolean
+}
+
+class OrdenProduccion {
+    + idOrden: int
+    + fechaCreacion: Date
+    + fechaEstimadaEntrega: Date
+    + estado: String
+    + etapas: List<Etapa>
+    + verificarEstadoGeneral(): void
+}
+
+class Notificacion {
+    + idNotificacion: int
+    + fechaHora: Date
+    + mensaje: String
+    + tipo: String
+    + etapaAsociada: Etapa
+}
+
+class SistemaNotificaciones {
+    + generarNotificacion(etapa: Etapa, mensaje: String): Notificacion
+    + enviarNotificacion(encargado: EncargadoProduccion, notificacion: Notificacion): void
+}
+
+EncargadoProduccion --> Notificacion : "Recibe"
+Notificacion --> Etapa : "Relacionado con"
+Etapa --> OrdenProduccion : "Pertenece a"
+SistemaNotificaciones --> Notificacion : "Genera"
+SistemaNotificaciones --> EncargadoProduccion : "Envía notificación a"
+
+@enduml

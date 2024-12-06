@@ -1,0 +1,36 @@
+@startuml
+
+class Disenador {
+    + idDisenador: int
+    + nombre: String
+    + correoElectronico: String
+    + recibirNotificacion(mensaje: String): void
+}
+
+class VersionDiseno {
+    + idVersion: int
+    + numeroVersion: String
+    + descripcion: String
+    + archivo: String
+    + estado: String
+    + notificarCambioEstado(): void
+}
+
+class SistemaDiseno {
+    + enviarNotificacion(disenador: Disenador, mensaje: String): void
+}
+
+class Proyecto {
+    + idProyecto: int
+    + nombre: String
+    + descripcion: String
+}
+
+Disenador --> SistemaDiseno : "Recibe notificaciones desde"
+SistemaDiseno --> Disenador : "Notifica sobre cambios"
+VersionDiseno --> Disenador : "Pertenece a propuesta de"
+VersionDiseno --> SistemaDiseno : "Solicita notificación a"
+VersionDiseno --> Proyecto : "Pertenece a"
+Proyecto --> VersionDiseno : "Contiene"
+
+@enduml

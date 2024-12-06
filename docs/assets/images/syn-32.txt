@@ -1,0 +1,38 @@
+@startuml
+
+class Diseñador {
+    + idDiseñador: int
+    + nombre: String
+    + cargarVersion(proyecto: Proyecto, version: VersionDiseno): void
+    + listarProyectos(): List<Proyecto>
+}
+
+class Proyecto {
+    + idProyecto: int
+    + nombre: String
+    + descripcion: String
+    + fechaCreacion: Date
+    + agregarVersion(version: VersionDiseno): void
+    + obtenerVersiones(): List<VersionDiseno>
+}
+
+class VersionDiseno {
+    + idVersion: int
+    + numeroVersion: String
+    + descripcion: String
+    + archivo: String
+    + fechaCarga: Date
+    + obtenerDetalles(): String
+}
+
+class SistemaDiseno {
+    + registrarVersion(proyecto: Proyecto, version: VersionDiseno): void
+    + obtenerHistorialVersiones(proyecto: Proyecto): List<VersionDiseno>
+}
+
+Diseñador --> Proyecto : "Gestiona"
+Proyecto --> VersionDiseno : "Contiene"
+Diseñador --> SistemaDiseno : "Interactúa con"
+SistemaDiseno --> Proyecto : "Gestiona versiones de"
+
+@enduml

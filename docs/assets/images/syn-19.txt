@@ -1,0 +1,64 @@
+@startuml
+
+class EncargadoInventarios {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + visualizarEstadisticasRotacion(): List<EstadisticaRotacion>
+}
+
+class Producto {
+    + idProducto: int
+    + nombre: String
+    + descripcion: String
+    + cantidadDisponible: int
+    + cantidadMinima: int
+    + cantidadMaxima: int
+    + precioUnitario: double
+    + categoria: String
+    + proveedor: String
+    + fechaIngreso: Date
+    + registrarMovimiento(movimiento: Movimiento): void
+    + obtenerEstadisticasRotacion(): EstadisticaRotacion
+}
+
+class Movimiento {
+    + idMovimiento: int
+    + tipoMovimiento: String
+    + cantidad: int
+    + fechaMovimiento: Date
+    + producto: Producto
+    + descripcion: String
+}
+
+class EstadisticaRotacion {
+    + idEstadistica: int
+    + producto: Producto
+    + cantidadVendida: int
+    + cantidadEntrante: int
+    + rotacion: double
+    + periodo: String
+}
+
+class Categoria {
+    + idCategoria: int
+    + nombre: String
+    + descripcion: String
+}
+
+class Proveedor {
+    + idProveedor: int
+    + nombre: String
+    + direccion: String
+    + telefono: String
+    + correo: String
+}
+
+EncargadoInventarios --> EstadisticaRotacion : "Consulta"
+Producto --> EstadisticaRotacion : "Genera"
+Producto --> Movimiento : "Tiene"
+Movimiento --> Producto : "Afecta"
+Producto --> Categoria : "Pertenece a"
+Producto --> Proveedor : "Suministrado por"
+
+@enduml

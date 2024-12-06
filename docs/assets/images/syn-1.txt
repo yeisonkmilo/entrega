@@ -1,0 +1,34 @@
+@startuml
+
+class Empleado {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + registrarCliente(cliente: Cliente): void
+}
+
+class Cliente {
+    + idCliente: int
+    + nombre: String
+    + direccion: String
+    + telefono: String
+    + correo: String
+}
+
+class Pedido {
+    + idPedido: int
+    + fecha: Date
+    + total: double
+}
+
+class Cotizacion {
+    + idCotizacion: int
+    + fecha: Date
+    + total: double
+}
+
+Empleado --> Cliente : "Registra"
+Cliente --> Cotizacion : "Solicita"
+Cliente --> Pedido : "Realiza"
+
+@enduml

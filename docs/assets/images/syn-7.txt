@@ -1,0 +1,31 @@
+@startuml
+
+class AnalistaComercial {
+    + idAnalista: int
+    + nombre: String
+    + aprobarCotizacion(cotizacion: Cotizacion): void
+    + rechazarCotizacion(cotizacion: Cotizacion): void
+}
+
+class Cotizacion {
+    + idCotizacion: int
+    + fecha: Date
+    + estado: String
+    + total: double
+    + detalles: List<DetalleCotizacion>
+    + aprobar(): void
+    + rechazar(): void
+}
+
+class DetalleCotizacion {
+    + idDetalle: int
+    + nombreProducto: String
+    + cantidad: int
+    + precioUnitario: double
+    + subtotal(): double
+}
+
+AnalistaComercial --> Cotizacion : "Aprueba/Rechaza"
+Cotizacion --> DetalleCotizacion : "Contiene 1..*"
+
+@enduml

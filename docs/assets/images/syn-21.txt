@@ -1,0 +1,61 @@
+@startuml
+
+class EncargadoProduccion {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + crearOrdenProduccion(productos: List<Producto>, cantidadTotal: int, fechaEntrega: Date): OrdenProduccion
+}
+
+class OrdenProduccion {
+    + idOrden: int
+    + fechaCreacion: Date
+    + fechaEntrega: Date
+    + estado: String
+    + productos: List<Producto>
+    + cantidadTotal: int
+    + crearDetalleOrden(): void
+}
+
+class Producto {
+    + idProducto: int
+    + nombre: String
+    + descripcion: String
+    + cantidadDisponible: int
+    + cantidadMinima: int
+    + cantidadMaxima: int
+    + precioUnitario: double
+    + categoria: String
+    + proveedor: String
+    + fechaIngreso: Date
+}
+
+class DetalleOrden {
+    + idDetalle: int
+    + producto: Producto
+    + cantidad: int
+    + especificaciones: String
+    + ordenProduccion: OrdenProduccion
+}
+
+class Categoria {
+    + idCategoria: int
+    + nombre: String
+    + descripcion: String
+}
+
+class Proveedor {
+    + idProveedor: int
+    + nombre: String
+    + direccion: String
+    + telefono: String
+    + correo: String
+}
+
+EncargadoProduccion --> OrdenProduccion : "Crea"
+OrdenProduccion --> DetalleOrden : "Contiene"
+DetalleOrden --> Producto : "Especifica"
+Producto --> Categoria : "Pertenece a"
+Producto --> Proveedor : "Suministrado por"
+
+@enduml

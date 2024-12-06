@@ -1,0 +1,38 @@
+@startuml
+
+class Empleado {
+    + idEmpleado: int
+    + nombre: String
+    + cargo: String
+    + generarCotizacion(detalles: List<DetalleCotizacion>): Cotizacion
+}
+
+class Cliente {
+    + idCliente: int
+    + nombre: String
+    + direccion: String
+    + telefono: String
+    + correo: String
+}
+
+class Cotizacion {
+    + idCotizacion: int
+    + fecha: Date
+    + total: double
+    + agregarDetalle(detalle: DetalleCotizacion): void
+    + calcularTotal(): double
+}
+
+class DetalleCotizacion {
+    + idDetalle: int
+    + nombreProducto: String
+    + cantidad: int
+    + precioUnitario: double
+    + subtotal(): double
+}
+
+Empleado --> Cotizacion : "Genera"
+Cliente --> Cotizacion : "Solicita"
+Cotizacion --> DetalleCotizacion : "Contiene 1..*"
+
+@enduml
