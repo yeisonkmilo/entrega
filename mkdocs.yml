@@ -10,7 +10,7 @@ repo_name: yeisonkmilo/Proyecto
 repo_url: https://github.com/yeisonkmilo/Proyecto
 
 # Copyright
-copyright: Copyright &copy; 2024 - 2030 Yusef Gonzalez | Aquicreamos
+copyright: Copyright &copy; 2024 - 2030 SynCroPro | SynCroPro
 
 extra_css:
   - assets/css/style.css
@@ -118,7 +118,7 @@ markdown_extensions:
 
 # Page tree
 nav:
-  - Home: index.md
+  - INICIO: index.md
   - DOCUMENTACIÓN:
       - DOC-1 Documentación: doc-1.md
       - BD Diagrama entidad Relación: bd.md

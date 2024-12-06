@@ -67,7 +67,7 @@ Diego, usuario del sistema, necesita compartir un informe de ventas con su equip
 ## Diagrama de Clases
 [Creado con plantuml](https://plantuml.com/es/)
 
-![Image title](./assets/images/53)
+![Image title](./assets/images/syn-53.png)
 
 ---
  
