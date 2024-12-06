@@ -1,5 +1,5 @@
 site_name: SynCroPro
-site_url: https://yeisonkmilo.github.io/Proyecto/
+site_url: https://yeisonkmilo.github.io/entrega/
 site_author: Yeison Camilo | Wilfer Espinoza
 site_description: >-
   Este es un proyecto que gestiona la documentación de mi proyecto – 
@@ -7,7 +7,7 @@ site_description: >-
 
 # Repository
 repo_name: yeisonkmilo/Proyecto
-repo_url: https://github.com/yeisonkmilo/Proyecto
+repo_url: https://yeisonkmilo.github.io/entrega/
 
 # Copyright
 copyright: Copyright &copy; 2024 - 2030 SynCroPro | SynCroPro
